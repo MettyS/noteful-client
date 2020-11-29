@@ -12,7 +12,11 @@ class AddFolder extends Component {
 
   getErrorMessage() {
     if(this.state.title.touched){
-      let message = this.state.title.value.length ? "" : "please enter a folder name";
+      let message = "";
+      if(!this.state.title.value || !this.state.title.value.length){
+        message = "please enter a folder name";
+      }
+      console.log('the add folder error is: ', message);
       return <p className='error'>{message}</p>
     }
     return <></>
