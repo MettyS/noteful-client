@@ -124,7 +124,7 @@ class App extends Component {
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
                     <header className="App__header">
                         <h1>
-                            <Link to="/">Noteful</Link>{' '}
+                            <Link to="/">Nooooooooteful</Link>{' '}
                             <FontAwesomeIcon icon="check-double" />
                         </h1>
                     </header>
