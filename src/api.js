@@ -53,10 +53,10 @@ function deleteFolder (id) {
 	});
 }
 
-export default {
-	getNotesAndFolders,
+const defaultExport = {getNotesAndFolders,
 	addNote,
 	deleteNote,
 	addFolder,
-	deleteFolder
-}
+	deleteFolder};
+
+export default defaultExport
