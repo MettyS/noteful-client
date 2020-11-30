@@ -1,5 +1,5 @@
 const URL = 
-`https://stormy-forest-17592.herokuapp.com/`;
+`https://stormy-forest-17592.herokuapp.com`;
 
 function fetchHandler (...args) {
 
