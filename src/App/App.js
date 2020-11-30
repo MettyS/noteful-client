@@ -7,7 +7,7 @@ import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import AddFolder from '../AddFolder/AddFolder';
-import AddNotePage from '../AddNotePage/AddNotePage';
+import AddNote from '../AddNote/AddNote';
 import api from '../api';
 import cuid from 'cuid';
 import './App.css';
@@ -105,7 +105,7 @@ class App extends Component {
                 ))}
                 <Route path="/note/:noteId" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
-								<Route path='/add-note' component={AddNotePage} />
+								<Route path='/add-note' component={AddNote} />
             </>
         );
     }
