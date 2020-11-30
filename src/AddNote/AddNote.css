@@ -1,0 +1,42 @@
+.add-note-form {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  color: #cacaca;
+  padding-bottom: 30px;
+  width: 400px;
+  background-color: #010d1e;
+  text-align: center;
+  margin: 10px 0 0 10px;
+}
+
+.note-submit-inputs {
+  width: 50%;
+}
+
+.note-submit-content {
+  resize: none;
+  width: 360px;
+  height: 200px;
+}
+
+.form-body {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.error-text {
+  font-size: 0.8rem;
+  color: black;
+  background: lightcoral;
+  border-radius: 20px;
+  padding: 5px 5px 8px 5px;
+}
+
+.form-div {
+  margin: 10px 0;
+}
+
+.loading-text {
+  color: #cacaca;
+}
