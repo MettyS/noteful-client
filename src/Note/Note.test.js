@@ -16,7 +16,7 @@ describe(`Note component`, () => {
   })
 
   it('renders the Note given props', () => {
-    const wrapper = shallow(<Note {...props} />)
+    const wrapper = shallow(<Note {...props} modified={props.modified.toString()}/>)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 })
