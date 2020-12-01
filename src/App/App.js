@@ -46,7 +46,7 @@ class App extends Component {
 
     //compound function to call api and update local state with new note
     handleAddNote = note => {
-				note.id = cuid();
+                console.log(note);
 				api.addNote(note)
 				.then( res => {
 					console.log('added note:', res);
@@ -65,7 +65,7 @@ class App extends Component {
     //compound function to call api and update local state with new folder
     handleAddFolder = name => {
         console.log('added foldername is: ',name);
-        let folder = {name: name, id: cuid()};
+        let folder = {name: name};
         api.addFolder(folder).then(res => {
             console.log(res);
             this.updateStateOnAddFolder(folder);
@@ -77,7 +77,7 @@ class App extends Component {
     renderNavRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folders/:folderId'].map(path => (
                     <Route
                         exact
                         key={path}
@@ -85,7 +85,7 @@ class App extends Component {
                         component={NoteListNav}
                     />
                 ))}
-                <Route exact path="/note/:noteId" component={NotePageNav} />
+                <Route exact path="/notes/:noteId" component={NotePageNav} />
                 <Route exact path="/add-folder" component={NotePageNav} />
                 <Route exact path="/add-note" component={NotePageNav} />
             </>
@@ -95,7 +95,7 @@ class App extends Component {
     renderMainRoutes() {
         return (
             <>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folders/:folderId'].map(path => (
                     <Route
                         exact
                         key={path}

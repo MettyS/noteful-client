@@ -43,8 +43,8 @@ export default class AddNote extends React.Component {
     myHeaders.append('Content-Type', 'application/json');
 
     var raw = JSON.stringify({
-      notename: obj.name,
-      folderid: obj.folderid,
+      name: obj.name,
+      folder_id: obj.folderid,
       content: obj.content,
     });
     var requestOptions = {
@@ -96,11 +96,10 @@ export default class AddNote extends React.Component {
     } = this.state;
     if (this.context.folders) {
       var options = this.context.folders.map((folder) => {
-        console.log('this.context.folders is true on line 97');
-        console.log(folder)
+
         return (
           <option key={folder.id} value={folder.id}>
-            {folder.foldername}
+            {folder.name}
           </option>
         );
       });
@@ -132,8 +131,9 @@ export default class AddNote extends React.Component {
                     value={name}
                     type='text'
                     name='notename'
-                    onChange={(event) =>
+                    onChange={(event) => {
                       this.setState({ error: false, name: event.target.value })
+                    }
                     }
                   />
                 </div>

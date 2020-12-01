@@ -22,6 +22,8 @@ function addNote (noteObject) {
 	noteObject.modified = new Date();
 	let body = JSON.stringify(noteObject);
 
+	console.log(body);
+
 	return fetchHandler(`${URL}/notes`, {
 		method: 'POST',
 		headers: { 'content-type': 'application/json'},
