@@ -96,6 +96,8 @@ export default class AddNote extends React.Component {
     } = this.state;
     if (this.context.folders) {
       var options = this.context.folders.map((folder) => {
+        console.log('this.context.folders is true on line 97');
+        console.log(folder)
         return (
           <option key={folder.id} value={folder.id}>
             {folder.foldername}
