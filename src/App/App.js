@@ -9,7 +9,6 @@ import ApiContext from '../ApiContext';
 import AddFolder from '../AddFolder/AddFolder';
 import AddNote from '../AddNote/AddNote';
 import api from '../api';
-import cuid from 'cuid';
 import './App.css';
 
 class App extends Component {
