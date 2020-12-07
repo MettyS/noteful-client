@@ -10,7 +10,7 @@ exports[`AddNote component renders the complete form 1`] = `
       <input
         id="noteName"
         name="noteName"
-        placeholder="ex: Awesome Note"
+        placeholder="ex: MyNote"
         required={true}
         type="text"
       />
@@ -25,7 +25,7 @@ exports[`AddNote component renders the complete form 1`] = `
       <textarea
         id="content"
         name="content"
-        placeholder="Type some notesy stuff here..."
+        placeholder="The content of your note goes here!"
         required={true}
       />
     </div>

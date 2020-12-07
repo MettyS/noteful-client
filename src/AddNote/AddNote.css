@@ -27,7 +27,7 @@
 
 .error-text {
   font-size: 0.8rem;
-  color: black;
+  color: rgb(210, 5, 5);
   background: lightcoral;
   border-radius: 20px;
   padding: 5px 5px 8px 5px;
