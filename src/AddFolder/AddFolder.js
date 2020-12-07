@@ -1,54 +1,71 @@
-import React, { Component } from 'react'
-import './AddFolder.css'
-import ApiContext from '../ApiContext'
+import React, { Component } from 'react';
+import ApiContext from '../ApiContext';
+import config from '../config';
+import ErrorBoundary from '../ErrorBoundaries/ErrorBoundaries';
 
-class AddFolder extends Component {
-
-  static contextType = ApiContext
-
-  state = {
-    title: { value: 'sample title' , touched: false}
+export default class AddFolder extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  getErrorMessage() {
-    if(this.state.title.touched){
-      let message = "";
-      if(!this.state.title.value || !this.state.title.value.length){
-        message = "please enter a folder name";
-      }
-      console.log('the add folder error is: ', message);
-      return <p className='error'>{message}</p>
-    }
-    return <></>
+  static defaultProps = {
+    history: {
+      goBack: () => {},
+    },
+  };
+
+  static contextType = ApiContext;
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const target = e.target,
+      name = target.folderName.value,
+      myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const raw = JSON.stringify({ folder_name: name });
+
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow',
+    };
+
+    fetch(`${config.API_ENDPOINT}/folders`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        this.context.addFolder(result);
+        this.props.history.goBack();
+      })
+      .catch((error) => console.log('error', error));
   }
 
   render() {
-    const { addFolder } = this.context
-    const getErrors = this.getErrorMessage();
-
-
     return (
-    <form
-      id='add-folder-form'
-      className='Noteful-form'
-      action='#'
-      onSubmit={e => {e.preventDefault();  addFolder(this.state.title.value); this.props.history.goBack()}}
-    >
-      <label htmlFor='folder-name-input'>New Folder Name:
-        {getErrors}
-      </label>
-      <input type='text' name='folder-title' className='field' id='folder-name-input' onChange={e => {
-        console.log(e.target.value);
-        this.setState({
-          title: {value: e.target.value, touched: true}
-        })
-      }}/>
-      <button type='submit' className='buttons'>Create Folder</button>
-    </form>
-  )
+      <ErrorBoundary>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            New Folder:{' '}
+            <input
+              type="text"
+              name="folderName"
+              id="folderName"
+              onChange={this.handleChange}
+              placeholder="ex: Awesome folder"
+              required
+            />{' '}
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </ErrorBoundary>
+    );
   }
-
-
 }
-
-export default AddFolder
